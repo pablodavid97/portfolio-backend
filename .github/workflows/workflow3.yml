@@ -26,5 +26,5 @@ jobs:
               uses: azure/webapps-deploy@v2
               with:
                   app-name: portfolio-backend-pll
-                  publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+                  publish-profile: ${{ secrets.PORTFOLIO_DB_PUBLISH_PROFILE_AZURE }}
                   package: .
