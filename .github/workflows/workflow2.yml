@@ -48,14 +48,9 @@ jobs:
 
             - name: 'Deploy to Azure Web App'
               id: deploy-to-webapp
-              uses: azure/webapps-deploy@v3
+              uses: azure/webapps-deploy@v2
               with:
                   app-name: 'portfolio-backend-pll'
                   slot-name: 'Production'
                   package: .
-
-            - name: Run Azure webapp deploy action using publish profile credentials
-              uses: azure/webapps-deploy@v2
-              with:
-                  app-name: portfolio-backend-pll
                   publish-profile: ${{ secrets.PORTFOLIO_DB_PUBLISH_PROFILE_AZURE }}
