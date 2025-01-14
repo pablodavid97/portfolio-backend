@@ -37,20 +37,18 @@ jobs:
             name: 'Production'
             url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-        steps:
-            - name: Download artifact from build job
-              uses: actions/download-artifact@v4
-              with:
-                  name: 'portfolio-backend-pll'
+    steps:
+        - name: Download artifact from build job
+          uses: actions/download-artifact@v4
+          with:
+              name: 'portfolio-backend-pll'
 
-            - name: 'Unzip artifact for deployment'
-              run: unzip release.zip
+        - name: 'Unzip artifact for deployment'
+          run: unzip release.zip
 
-            - name: 'Deploy to Azure Web App'
-              id: deploy-to-webapp
-              uses: azure/webapps-deploy@v2
-              with:
-                  app-name: 'portfolio-backend-pll'
-                  slot-name: 'Production'
-                  package: .
-                  publish-profile: ${{ secrets.PORTFOLIO_DB_PUBLISH_PROFILE_AZURE }}
+        - name: 'Deploy to Azure Web App using publish profile'
+          uses: azure/webapps-deploy@v3
+          with:
+              app-name: 'portfolio-backend-pll'
+              publish-profile: ${{ secrets.PORTFOLIO_DB_PUBLISH_PROFILE_AZURE }}
+              package: .
