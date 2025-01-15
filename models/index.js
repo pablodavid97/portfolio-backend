@@ -7,6 +7,12 @@ const sequelize = new Sequelize(
         host: process.env.DB_HOST,
         port: process.env.DB_PORT || 5432,
         dialect: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true, // Enforce SSL
+                rejectUnauthorized: false, // Allow self-signed certificates
+            },
+        },
         define: {
             underscored: true, // Automatically convert camelCase to snake_case for all models
         },

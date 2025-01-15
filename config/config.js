@@ -8,6 +8,12 @@ module.exports = {
         host: process.env.DB_HOST || '127.0.0.1',
         port: process.env.DB_PORT || 5432,
         dialect: 'postgres', // Change this to your database dialect (e.g., mysql, postgres)
+        dialectOptions: {
+            ssl: {
+                require: true, // Enforce SSL
+                rejectUnauthorized: false, // Allow self-signed certificates
+            },
+        },
         define: {
             underscored: true, // Use snake_case for columns by default (same as in your centralized sequelize instance)
         },
@@ -19,6 +25,12 @@ module.exports = {
         host: process.env.DB_HOST || '127.0.0.1',
         port: process.env.DB_PORT || 5432,
         dialect: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true, // Enforce SSL
+                rejectUnauthorized: false, // Allow self-signed certificates
+            },
+        },
         define: {
             underscored: true, // Use snake_case for columns by default (same as in your centralized sequelize instance)
         },
@@ -30,6 +42,12 @@ module.exports = {
         host: process.env.DB_HOST || '127.0.0.1',
         port: process.env.DB_PORT || 5432,
         dialect: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true, // Enforce SSL
+                rejectUnauthorized: false, // Allow self-signed certificates
+            },
+        },
         define: {
             underscored: true, // Use snake_case for columns by default (same as in your centralized sequelize instance)
         },
